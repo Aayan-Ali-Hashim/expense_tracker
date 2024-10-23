@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import "./MainPage.css";
 const MainPage = () => {
   const [budgetValue, setBudgetValue] = useState<number | null > (null);
-  const [value, setValue] = useState<number | null >(null);
+  const [value, setValue] = useState<number>(0);
   const [name, setName] = useState("");
   const [cost, setCost] = useState(0);
   const [expenses, setExpenses] = useState<{name:string , cost:number}[]>([]);
@@ -38,11 +38,11 @@ useEffect(()=>{
     e.preventDefault();
     if(value === null){
 
-      setValue(null)
+      setValue(0)
     }
     else{
       setBudgetValue(value)
-      setValue(null)
+      setValue(0)
 
     }
   };
@@ -72,12 +72,12 @@ let remaining;
     remaining = 0
   }
 
-const handleSignOut = (e) => {
+const handleSignOut = (e:React.FormEvent) => {
   e.preventDefault()
   localStorage.setItem("login", "false")
   location.reload()
 }
-const handleListClear = (e) => {
+const handleListClear = (e:React.FormEvent) => {
   e.preventDefault()
   localStorage.removeItem("expenses")
   location.reload()
@@ -98,7 +98,7 @@ const handleListClear = (e) => {
  
             value={value}
 
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => setValue(parseInt(e.target.value))}
         />
         <button className="save-budget-button" type="submit">
           Save Budget
@@ -117,7 +117,7 @@ const handleListClear = (e) => {
       {expenses.length > 0 ? (
         <ul className="lists">
           {expenses.map((expense, index) => (
-            <li key={expense.id} className="myli">
+            <li key={index} className="myli">
               <div className="li-container">
                 <span className="name-text">{expense.name}</span>
                 <span className="cost-text">Rs. {expense.cost}</span>

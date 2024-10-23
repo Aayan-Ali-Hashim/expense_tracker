@@ -1,11 +1,9 @@
 import "./Signup.css";
 import Image from "../../assets/wallet.png";
-import { useNavigate } from "react-router-dom";
-import React, { ReactEventHandler, useState } from "react";
+import React, { useState } from "react";
 
 const Signup = () => {
 
-  const navigate = useNavigate();
 const [email, setEmail] = useState('');
   const handleSignup = (e:React.FormEvent) => {
     e.preventDefault()
