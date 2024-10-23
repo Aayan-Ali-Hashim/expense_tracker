@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./MainPage.css";
 const MainPage = () => {
   const [budgetValue, setBudgetValue] = useState(null);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState<any | null >(null);
   const [name, setName] = useState("");
   const [cost, setCost] = useState(0);
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState<{name:string , cost:number}[]>([]);
 
   useEffect(() => {
     const savedExpenses = localStorage.getItem("expenses");
@@ -27,19 +27,24 @@ const MainPage = () => {
       setBudgetValue(JSON.parse(savedBudget)); 
     }
 
-  },[budgetValue])
+  },[])
 
 useEffect(()=>{
-  if (budgetValue > 0) {
+  if (budgetValue !== null && budgetValue > 0) {
     localStorage.setItem("budget", JSON.stringify(budgetValue));
   }
 },[budgetValue])
-  const handleBudget = (e) => {
+  const handleBudget = (e:React.FormEvent) => {
     e.preventDefault();
-    setBudgetValue(value);
+    if(value === null){
+      setValue(0);
+    }
+    else{
+      setBudgetValue(value)
+    }
   };
 
-  const handleExpense = (e) => {
+  const handleExpense = (e:React.FormEvent) => {
     e.preventDefault();
     if (name && cost) {
       setExpenses([...expenses, { name: name, cost: cost }]);
@@ -52,7 +57,7 @@ useEffect(()=>{
     sum = sum + expense.cost 
   });
 let remaining;
-  if(budgetValue > sum){
+  if(budgetValue!== null && budgetValue > sum){
     remaining = budgetValue - sum
   }
 
@@ -68,7 +73,9 @@ let remaining;
           className="input-budget"
           type="number"
           placeholder="0"
-          value={value}
+ 
+            value={value}
+
           onChange={(e) => setValue(e.target.value)}
         />
         <button className="save-budget-button" type="submit">
@@ -84,11 +91,11 @@ let remaining;
       {expenses.length > 0 && (
         <ul className="lists">
           {expenses.map((expense, index) => (
-            <li key={index}>
+            <li key={index} className="myli">
               <div className="li-container">
                 <span className="name-text">{expense.name}</span>
                 <span className="cost-text">Rs. {expense.cost}</span>
-              </div>
+              </div> 
             </li>
           ))}
         </ul>

@@ -1,143 +1,141 @@
-@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Rethink Sans", sans-serif;
-}
-.main-page{
-    margin: 2vh 16vh;
-}
-.header-container{
-    display: flex;
-    justify-content: space-between;
-}
-.header{
-    font-weight: 500;
-}
-.signout-button{
-    color: rgb(0, 0, 0);
-    padding: 7px 3px;
-    width: 12vh;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-}
-.budget-form{
-    display: flex;
-    flex-direction: column;
-}
-.save-budget-button{
- width: 100px;
- margin-top: 2vh;
- color: white;
- background-color: black;
- border-radius: 4px;
- padding: 1vh;
- cursor: pointer;
-}
-.input-budget{
-    height: 5vh;
-    padding-left: 1vh;
-}
-.display-budget{
-    color: rgba(0, 0, 0, 0.568);
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2vh;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    min-width: 340px;
-}
-.budget{
-    background-color: rgba(95, 95, 95, 0.194);
-    padding: 2.5vh 0;
-    padding-left: 2vh;
-    padding-right: 30vh;
-    border-radius: 3px;
-    font-size:13px;
-    flex: 2;
-    /* margin-left: 2vh; */
-}    
-.remaining{
-    background-color: rgba(0, 128, 0, 0.194);
-    padding: 2.5vh 0;
-    padding-left: 2vh;
-    padding-right: 30vh;
-    border-radius: 3px;
-    font-size:13px;
-    flex: 2;
-    margin-left: 2vh;
-}
-.spent{
-    background-color: rgba(0, 0, 255, 0.253);
-    padding: 2.5vh 0;
-    padding-left: 2vh;
-    padding-right: 30vh;
-    border-radius: 3px;
-    font-size:13px;
-    flex: 3;
-    margin-left: 2vh;
-}
-.save-expense-button{
-    width: 60px;
-    margin-top: 2vh;
-    color: rgb(255, 255, 255);
-    background-color:rgba(13,110,253,255);
-    border-radius: 4px;
-    padding: 1vh;
-    cursor: pointer;
-    border: none;
+@import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap");
 
+.main-page {
+    overflow: auto;
+  padding: 0;
+  font-family: "Rethink Sans", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  margin: 4vh 16vh;
 }
-.add-expense-container{
-    display: flex;
-    flex-direction: column;
-    margin-top: 2vh;
-    width: 100%;
+.header-container {
+  display: flex;
+  justify-content: space-between;
 }
-.expense-form{
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
+.header {
+  font-weight: 500;
 }
-.sub-container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.signout-button {
+  color: rgb(0, 0, 0);
+  padding: 7px 3px;
+  width: 12vh;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
 }
-.input-container{
-    display: flex;
-    flex-direction: row;
-    margin-top: 2vh;
+.budget-form {
+  display: flex;
+  flex-direction: column;
 }
-.cost-container{
-    margin-left: 2vh;
+.save-budget-button {
+  width: 100px;
+  margin-top: 2vh;
+  color: white;
+  background-color: black;
+  border-radius: 4px;
+  padding: 1vh;
+  cursor: pointer;
 }
-.input-box{
-    padding: 4.5px;
+.input-budget {
+  height: 5vh;
+  padding-left: 1vh;
+}
+.display-budget {
+  color: rgba(0, 0, 0, 0.568);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2vh;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 340px;
+}
+.budget {
+  background-color: rgba(95, 95, 95, 0.194);
+  padding: 2.5vh 0;
+  padding-left: 2vh;
+  padding-right: 30vh;
+  border-radius: 3px;
+  font-size: 13px;
+  flex: 2;
+}
+.remaining {
+  background-color: rgba(0, 128, 0, 0.194);
+  padding: 2.5vh 0;
+  padding-left: 2vh;
+  padding-right: 30vh;
+  border-radius: 3px;
+  font-size: 13px;
+  flex: 2;
+  margin-left: 2vh;
+}
+.spent {
+  background-color: rgba(0, 0, 255, 0.253);
+  padding: 2.5vh 0;
+  padding-left: 2vh;
+  padding-right: 30vh;
+  border-radius: 3px;
+  font-size: 13px;
+  flex: 3;
+  margin-left: 2vh;
+}
+.save-expense-button {
+  width: 60px;
+  margin-top: 2vh;
+  color: rgb(255, 255, 255);
+  background-color: rgba(13, 110, 253, 255);
+  border-radius: 4px;
+  padding: 1vh;
+  cursor: pointer;
+  border: none;
+}
+.add-expense-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vh;
+  width: 100%;
+}
+.expense-form {
+  display: flex;
+  flex-direction: column;
+}
+.sub-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.input-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2vh;
+}
+.cost-container {
+  margin-left: 2vh;
+}
+.input-box {
+  padding: 4.5px;
+}
+.li-container {
+  border: 1px solid rgb(180, 179, 179);
+  border-radius: 2px;
+  padding: 1vh;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.cost-text {
+  background-color: rgb(29, 137, 156);
+  color: white;
+  font-size: 11px;
+  padding: 3px;
+  border-radius: 3px;
+}
+.lists {
+  list-style: none;
+}
+.expenses-heading {
+  font-size: 25px;
+  font-weight: 500;
+  margin-top: 5vh;
+}
 
-}
-.li-container{
-    border: 1px solid rgb(180, 179, 179);
-    border-radius: 2px;
-    padding: 1vh;
-    font-size: 15px;
-}
-.cost-text{
-    float: right;
-    background-color: rgb(29, 137, 156);
-    color: white;
-    font-size: 11px;
-    padding:3px;
-    border-radius: 3px;
-}
-.lists{
-    list-style: none;
-}
-.expenses-heading{
-    font-size: 25px;
-    font-weight:500;
-    margin-top: 5vh;
-}
