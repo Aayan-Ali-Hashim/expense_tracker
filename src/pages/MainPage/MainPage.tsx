@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./MainPage.css";
 const MainPage = () => {
-  const [budgetValue, setBudgetValue] = useState(null);
-  const [value, setValue] = useState<any | null >(null);
+  const [budgetValue, setBudgetValue] = useState<number | null > (null);
+  const [value, setValue] = useState<number | null >(null);
   const [name, setName] = useState("");
   const [cost, setCost] = useState(0);
   const [expenses, setExpenses] = useState<{name:string , cost:number}[]>([]);
@@ -37,10 +37,13 @@ useEffect(()=>{
   const handleBudget = (e:React.FormEvent) => {
     e.preventDefault();
     if(value === null){
-      setValue(0);
+
+      setValue(null)
     }
     else{
       setBudgetValue(value)
+      setValue(null)
+
     }
   };
 
@@ -50,22 +53,41 @@ useEffect(()=>{
       setExpenses([...expenses, { name: name, cost: cost }]);
       setCost(0);
       setName("");
+      if(budgetValue !== null && sum >= budgetValue){
+        alert("Expenses Exceeded your Budget")
+    
+      }
     }
   };
   let sum = 0;
   expenses.map((expense) => {
     sum = sum + expense.cost 
   });
+
 let remaining;
   if(budgetValue!== null && budgetValue > sum){
     remaining = budgetValue - sum
   }
+  else{
+    remaining = 0
+  }
+
+const handleSignOut = (e) => {
+  e.preventDefault()
+  localStorage.setItem("login", "false")
+  location.reload()
+}
+const handleListClear = (e) => {
+  e.preventDefault()
+  localStorage.removeItem("expenses")
+  location.reload()
+}
 
   return (
     <div className="main-page">
       <div className="header-container">
         <h1 className="header">Personal Expense Tracker</h1>
-        <button className="signout-button">Sign Out</button>
+        <button className="signout-button" onClick={handleSignOut}>Sign Out</button>
       </div>
       <form className="budget-form" onSubmit={handleBudget}>
         <label>Add/Update Budget</label>
@@ -87,11 +109,15 @@ let remaining;
         <span className="remaining">Remaining: Rs {remaining} </span>
         <span className="spent">Spent so far: Rs {sum}</span>
       </div>
+      <div className="expenses-container">
       <h1 className="expenses-heading">Expenses</h1>
-      {expenses.length > 0 && (
+      <button className="save-budget-button clear-expenses-button" onClick={handleListClear}>Clear Expenses</button>
+
+      </div>
+      {expenses.length > 0 ? (
         <ul className="lists">
           {expenses.map((expense, index) => (
-            <li key={index} className="myli">
+            <li key={expense.id} className="myli">
               <div className="li-container">
                 <span className="name-text">{expense.name}</span>
                 <span className="cost-text">Rs. {expense.cost}</span>
@@ -99,7 +125,7 @@ let remaining;
             </li>
           ))}
         </ul>
-      )}
+      ): (<div>No items found</div>)}
       <div className="add-expense-container">
         <h2>Add Expense</h2>
         <div className="expense-form">

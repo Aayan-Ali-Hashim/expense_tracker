@@ -1,13 +1,22 @@
 import "./Signup.css";
 import Image from "../../assets/wallet.png";
 import { useNavigate } from "react-router-dom";
+import React, { ReactEventHandler, useState } from "react";
 
 const Signup = () => {
-  const navigate = useNavigate(); 
 
+  const navigate = useNavigate();
+const [email, setEmail] = useState('');
   const handleSignup = (e:React.FormEvent) => {
     e.preventDefault()
-    navigate("/home"); 
+    if (email.includes('@') && email.includes('.')) {
+      localStorage.setItem('login', 'true')
+      console.log("log in successful")
+      window.location.href = '/'
+  }
+  else {
+      alert("Incorrect email")
+  }
   };
 
   return (
@@ -26,7 +35,7 @@ const Signup = () => {
         <form className="form" onSubmit={handleSignup}>
           <div className="email-container">
             <label>Email</label>
-            <input type="email" placeholder="Email address" className="input" />
+            <input type="email" placeholder="Email address" className="input" onChange={(e)=>setEmail(e.target.value)}/>
           </div>
           <div className="email-container">
             <label>Password</label>
