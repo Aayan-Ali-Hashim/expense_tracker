@@ -1,16 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap");
 
+*{
+    /* border: 1px solid red; */
+}
 .main-page {
     overflow: auto;
   padding: 0;
   font-family: "Rethink Sans", sans-serif;
   box-sizing: border-box;
-  margin: 0;
   margin: 4vh 16vh;
 }
 .header-container {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
+  height: 20px;
+  margin-bottom: 3vh;
 }
 .header {
   font-weight: 500;
@@ -18,7 +22,8 @@
 .signout-button {
   color: rgb(0, 0, 0);
   padding: 7px 3px;
-  width: 12vh;
+  width: 80px;
+  height: 30px;
   background-color: black;
   color: white;
   border-radius: 5px;
@@ -30,12 +35,13 @@
 }
 .save-budget-button {
   width: 100px;
-  margin-top: 2vh;
+  margin-top: 1vh;
   color: white;
   background-color: black;
   border-radius: 4px;
   padding: 1vh;
   cursor: pointer;
+  /* margin-bottom: 1vh; */
 }
 .input-budget {
   height: 5vh;
@@ -93,7 +99,7 @@
 .add-expense-container {
   display: flex;
   flex-direction: column;
-  margin-top: 2vh;
+  margin-top: 0vh;
   width: 100%;
 }
 .expense-form {
@@ -121,6 +127,7 @@
   border-radius: 2px;
   padding: 1vh;
   font-size: 15px;
+  scrollbar-color: blue;
 }
 .cost-text {
     background-color: rgb(29, 137, 156);
@@ -156,4 +163,14 @@
     margin-top: 4vh;
     display: flex;
     align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

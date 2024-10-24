@@ -4,7 +4,7 @@ const MainPage = () => {
   const [budgetValue, setBudgetValue] = useState<number | null > (null);
   const [value, setValue] = useState<number>(0);
   const [name, setName] = useState("");
-  const [cost, setCost] = useState(0);
+  const [cost, setCost] = useState<number>(0);
   const [expenses, setExpenses] = useState<{name:string , cost:number}[]>([]);
 
   useEffect(() => {
